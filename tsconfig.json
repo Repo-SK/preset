@@ -10,9 +10,6 @@
     "resolveJsonModule": true,
     "types": ["node", "@preset/core/globals"]
   },
-  "include": [
-    "./*.ts",
-    "./src/**/*.ts"
-  ],
+  "include": ["./*.ts", "./src/**/*.ts"],
   "exclude": ["templates", "node_modules"]
 }

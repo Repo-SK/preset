@@ -4,12 +4,12 @@
   <img src="https://github.com/hybridly/hybridly/raw/0.x/.github/assets/logo-shadow.svg" style="width:125px;" />
 </p>
 
-<h1 align="center">Hybridly preset</h1>
-<pre><div align="center">npx @preset/cli apply hybridly/preset</div></pre>
+<h1 align="center">Hybridly auth preset</h1>
+<pre><div align="center">npx @preset/cli apply https://github.com/Repo-SK/preset-hybridly-auth.git</div></pre>
 
 <div align="center">
   <br />
-  This preset installs Hybridly in a fresh Laravel project. <br />
+  This preset installs Hybridly in a fresh Laravel project and scaffolds auth views like Laravel Breeze<br />
   <br />
   <br />
   <sub>·</sub>
@@ -48,5 +48,8 @@ This is configurable by using command-line flags when using the preset.
   <br />
   <sub>
     Built with ❤︎ by <a href="https://github.com/enzoinnocenzi">Enzo Innocenzi</a>
+  </sub>
+  <sub>
+    Extended by <a href="https://github.com/Repo-SK">SK</a>
   </sub>
 </p>

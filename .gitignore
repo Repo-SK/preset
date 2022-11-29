@@ -1,1 +1,4 @@
 node_modules
+package-lock.json
+templates/base/app/.DS_Store
+templates/base/app/Http/.DS_Store

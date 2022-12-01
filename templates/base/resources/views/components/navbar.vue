@@ -4,11 +4,14 @@ import { RouterLink } from "@hybridly/vue";
 import { useDark, useToggle } from "@vueuse/core";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import Avatar from "@/views/components/avatar.vue";
+import Logo from "@/views/components/icons/logo.vue";
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 const user = useProperty("security.user");
+const context = useContext();
+const component = computed(() => context.value?.view.name || "");
 </script>
 
 <template>
@@ -17,21 +20,27 @@ const user = useProperty("security.user");
       class="mx-auto flex h-full max-w-screen-2xl items-center justify-between"
     >
       <div class="flex h-full items-center">
-        <h1
-          class="text-xl font-medium capitalize tracking-tight text-theme-base"
-        >
-          Laravel
-        </h1>
+        <Logo class="h-8" />
 
-        <div class="hidden h-full pl-10 sm:flex">
+        <div class="hidden h-full space-x-2 pl-10 sm:flex">
           <RouterLink
             :href="route('dashboard.index')"
             class="relative flex items-center px-3 text-sm font-semibold hover:text-theme-accent"
             :class="{
-              'active-nav': true,
+              'active-nav': component === 'dashboard',
             }"
           >
             Dashboard
+          </RouterLink>
+
+          <RouterLink
+            :href="route('teams.index')"
+            class="relative flex items-center px-3 text-sm font-semibold hover:text-theme-accent"
+            :class="{
+              'active-nav': component.startsWith('teams/'),
+            }"
+          >
+            Teams
           </RouterLink>
         </div>
       </div>

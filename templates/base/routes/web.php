@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountProfileController;
+use App\Http\Controllers\AccountSecurityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,7 @@ Route::middleware(["auth", "verified"])->group(function () {
     })->name("dashboard.index");
 
     Route::get("/account/profile", AccountProfileController::class)->name("account.profile");
+    Route::get("/account/security", AccountSecurityController::class)
+        ->middleware("password.confirm")
+        ->name("account.security");
 });

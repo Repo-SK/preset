@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import unquote from "@/utilities/unquote";
-
 import InputText from "@/views/components/input-text.vue";
 import { RouterLink } from "@hybridly/vue";
 

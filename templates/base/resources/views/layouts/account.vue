@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import Navbar from "@/views/components/navbar.vue";
 import { computed } from "vue";
-import { UserCircleIcon } from "@heroicons/vue/24/outline";
+import { UserCircleIcon, LockClosedIcon } from "@heroicons/vue/24/outline";
+
+const context = useContext();
+const component = computed(() => context.value?.view.name || "");
 
 const nav = computed(() => {
   return [
@@ -9,7 +12,13 @@ const nav = computed(() => {
       name: "Profile",
       href: route("account.profile"),
       icon: UserCircleIcon,
-      current: true,
+      current: component.value === "account/profile/index",
+    },
+    {
+      name: "Security",
+      href: route("account.security"),
+      icon: LockClosedIcon,
+      current: component.value === "account/security/index",
     },
   ];
 });

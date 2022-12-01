@@ -32,16 +32,6 @@ const component = computed(() => context.value?.view.name || "");
           >
             Dashboard
           </RouterLink>
-
-          <RouterLink
-            :href="route('teams.index')"
-            class="relative flex items-center px-3 text-sm font-semibold hover:text-theme-accent"
-            :class="{
-              'active-nav': component.startsWith('teams/'),
-            }"
-          >
-            Teams
-          </RouterLink>
         </div>
       </div>
 

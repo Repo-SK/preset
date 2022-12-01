@@ -1,20 +1,26 @@
 <script setup lang="ts">
+import InputText from "@/views/components/input-text.vue";
+
 const form = useForm({
   method: "POST",
-  url: "/email/verification-notification",
-  fields: {},
+  url: route("two-factor.login"),
+  fields: {
+    code: "",
+  },
 });
-
-const status = useProperty("status");
 </script>
 
 <template layout="auth">
   <form @submit.prevent="form.submit" class="space-y-5">
-    <span v-if="status === 'verification-link-sent'"
-      >A new email verification link has been emailed to you!</span
-    >
-
-    <h1>Please verify your email by clicking the link sent to you.</h1>
+    <!-- Code -->
+    <InputText
+      v-model="form.fields.code"
+      :errors="form.errors.code"
+      id="code"
+      label="Authentication token or recovery code"
+      type="text"
+      :required="true"
+    />
 
     <button
       type="submit"
@@ -22,7 +28,7 @@ const status = useProperty("status");
       :class="{ 'loading-absolute': form.processing }"
       :disabled="form.processing"
     >
-      Resend confirmation email
+      Login
     </button>
   </form>
 </template>

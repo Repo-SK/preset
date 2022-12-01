@@ -265,7 +265,7 @@ async function installBase({ autoImports, i18n, icons }: Options) {
         type: "add-line",
         match: /use Laravel\\Sanctum\\HasApiTokens;/,
         position: "after",
-        lines: ["use LaravelFortifyTwoFactorAuthenticatable;"],
+        lines: ["use Laravel\\Fortify\\TwoFactorAuthenticatable;"],
       },
       {
         type: "update-content",

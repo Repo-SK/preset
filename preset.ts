@@ -256,6 +256,27 @@ async function installBase({ autoImports, i18n, icons }: Options) {
     },
   });
 
+  await editFiles({
+    title: "update user model",
+    files: "app/Models/User.php",
+    operations: [
+      {
+        type: "add-line",
+        match: /use Laravel\\Sanctum\\HasApiTokens;/,
+        position: "after",
+        lines: ["use LaravelFortifyTwoFactorAuthenticatable;"],
+      },
+      {
+        type: "update-content",
+        update: (content) =>
+          content.replace(
+            "use HasApiTokens, HasFactory, Notifiable;",
+            "use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;"
+          ),
+      },
+    ],
+  });
+
   await executeCommand({
     title: "migrate database",
     command: "php",

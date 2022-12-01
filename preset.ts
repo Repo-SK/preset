@@ -247,6 +247,7 @@ async function installBase({ autoImports, i18n, icons }: Options) {
         'Fortify::registerView(fn () => hybridly("auth.register"));',
         'Fortify::verifyEmailView(fn () => hybridly("auth.verify-email"));',
         'Fortify::confirmPasswordView(fn () => hybridly("auth.confirm-password"));',
+        'Fortify::twoFactorChallengeView(fn () => hybridly("auth.two-factor-challenge"));',
         'Fortify::requestPasswordResetLinkView(fn () => hybridly("auth.forgot-password"));',
         'Fortify::resetPasswordView(fn () => hybridly("reset-password", [',
         '    "email" => request()->query("email"),',

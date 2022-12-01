@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { useDark, useToggle } from "@vueuse/core";
 import Logo from "@/views/components/icons/logo.vue";
-import { SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
+import { SunIcon, MoonIcon, ArrowLeftIcon } from "@heroicons/vue/24/outline";
+import { RouterLink } from "@hybridly/vue";
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
+
+const context = useContext();
+const component = computed(() => context.value?.view.name || "");
 </script>
 
 <template>
@@ -17,8 +21,18 @@ const toggleDark = useToggle(isDark);
     >
       <slot />
     </main>
+
+    <!-- only show this if not on login/register page -->
+    <RouterLink
+      v-if="!['auth.login', 'auth.register'].includes(component)"
+      :href="route('login')"
+      class="button-link mt-5 flex items-center"
+    >
+      <ArrowLeftIcon class="mr-2 h-4 w-4" /> Back to sign in
+    </RouterLink>
   </div>
 
+  <!-- theme toggle fixed to top-right of dom -->
   <div class="fixed top-10 right-10">
     <button
       @click="toggleDark()"

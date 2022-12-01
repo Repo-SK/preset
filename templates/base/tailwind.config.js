@@ -5,6 +5,7 @@ module.exports = {
     "./resources/**/*.ts",
     "./resources/**/*.vue",
   ],
+  safelist: ["dark"],
   darkMode: "class",
   theme: {
     extend: {},
